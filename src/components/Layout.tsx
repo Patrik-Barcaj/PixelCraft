@@ -28,28 +28,28 @@ export default function Layout() { // Layout component
 
       <motion.header /* Header */
         style={{ backgroundColor: navBg, backdropFilter: navBlur, WebkitBackdropFilter: navBlur }} /* Dynamic styles */
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12 md:py-6 flex justify-between items-center border-b border-white/5 transition-all duration-300" /* Header styling */
+        className="fixed top-0 left-0 right-0 z-50 px-4 py-4 lg:px-12 lg:py-6 flex justify-between items-center border-b border-white/5 transition-all duration-300" /* Header styling */
       > {/* Close header opening */}
         <Link to="/" className="cursor-pointer group"> {/* Logo link */}
           <motion.div /* Motion wrapper for conditional opacity */
             style={{ opacity: location.pathname === '/' ? logoOpacity : 1 }} /* Opacity style */
-            className="flex items-center gap-4" /* Flex classes */
+            className="flex items-center gap-2 lg:gap-4 shrink-0" /* Flex classes */
           > {/* Close motion div */}
-            <img src={logoOnly} alt="Logo" className="h-8 md:h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-300" /> {/* Logo image */}
-            <img src={pixelCraftText} alt="Pixel Craft" className="h-8 md:h-10 w-auto object-contain group-hover:brightness-125 transition-all" /> {/* Brand text image */}
+            <img src={logoOnly} alt="Logo" className="h-[26px] md:h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-300" /> {/* Logo image resized for mobile */}
+            <img src={pixelCraftText} alt="Pixel Craft" className="h-[26px] md:h-10 w-auto object-contain group-hover:brightness-125 transition-all" /> {/* Brand text resized for mobile */}
           </motion.div> {/* Close motion wrapper */}
         </Link> {/* Close logo link */}
 
-        <nav className="hidden md:flex flex-wrap justify-center items-center gap-4 md:gap-6 text-xs md:text-sm font-bold tracking-widest uppercase"> {/* Desktop Navigation */}
+        <nav className="hidden lg:flex justify-center items-center gap-6 text-sm font-bold tracking-widest uppercase whitespace-nowrap"> {/* Desktop Navigation */}
           <Link to="/" className={`hover:text-brand-yellow transition-colors ${location.pathname === '/' ? 'text-brand-yellow' : 'text-gray-300'}`}>Home</Link> {/* Home link */}
           <Link to="/about" className={`hover:text-brand-yellow transition-colors ${location.pathname === '/about' ? 'text-brand-yellow' : 'text-gray-300'}`}>About</Link> {/* About link */}
           <Link to="/services" className={`hover:text-brand-yellow transition-colors ${location.pathname === '/services' ? 'text-brand-yellow' : 'text-gray-300'}`}>Services</Link> {/* Services link */}
           <Link to="/pricing" className={`hover:text-brand-yellow transition-colors ${location.pathname === '/pricing' ? 'text-brand-yellow' : 'text-gray-300'}`}>Pricing</Link> {/* Pricing link */}
           <Link to="/portfolio" className={`hover:text-brand-yellow transition-colors ${location.pathname === '/portfolio' ? 'text-brand-yellow' : 'text-gray-300'}`}>Portfolio</Link> {/* Portfolio link */}
-          <Link to="/contact" className={`hover:text-black hover:bg-brand-yellow hover:border-brand-yellow transition-all duration-300 bg-white/5 px-6 py-2 md:py-3 rounded border border-white/10 shadow-lg ${location.pathname === '/contact' ? 'bg-brand-yellow text-black' : ''}`}>Contact</Link> {/* Contact link */}
+          <Link to="/contact" className={`hover:text-black hover:bg-brand-yellow hover:border-brand-yellow transition-all duration-300 bg-white/5 px-6 py-3 rounded border border-white/10 shadow-lg ${location.pathname === '/contact' ? 'bg-brand-yellow text-black' : ''}`}>Contact</Link> {/* Contact link */}
         </nav> {/* Close navigation */}
 
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-white hover:text-brand-yellow transition-colors z-50"> {/* Hamburger toggle */}
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2 text-white hover:text-brand-yellow transition-colors z-50"> {/* Hamburger toggle */}
           {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />} {/* Icon toggle */}
         </button> {/* Close toggle */}
       </motion.header> {/* Close header */}
@@ -60,19 +60,21 @@ export default function Layout() { // Layout component
             initial={{ opacity: 0, y: -20 }} /* Initial state */
             animate={{ opacity: 1, y: 0 }} /* Animate state */
             exit={{ opacity: 0, y: -20 }} /* Exit state */
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 md:hidden" /* Styling */
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl flex flex-col pt-24 pb-12 overflow-y-auto lg:hidden" /* Styling */
           > {/* Close motion div */}
-            <Link onClick={() => setIsMenuOpen(false)} to="/" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/' ? 'text-brand-yellow' : 'text-gray-300'}`}>Home</Link> {/* Home link */}
+            <div className="flex flex-col items-center justify-center gap-6 my-auto min-h-max"> {/* Inner wrapper */}
+              <Link onClick={() => setIsMenuOpen(false)} to="/" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/' ? 'text-brand-yellow' : 'text-gray-300'}`}>Home</Link> {/* Home link */}
             <Link onClick={() => setIsMenuOpen(false)} to="/about" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/about' ? 'text-brand-yellow' : 'text-gray-300'}`}>About</Link> {/* About link */}
             <Link onClick={() => setIsMenuOpen(false)} to="/services" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/services' ? 'text-brand-yellow' : 'text-gray-300'}`}>Services</Link> {/* Services link */}
             <Link onClick={() => setIsMenuOpen(false)} to="/pricing" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/pricing' ? 'text-brand-yellow' : 'text-gray-300'}`}>Pricing</Link> {/* Pricing link */}
             <Link onClick={() => setIsMenuOpen(false)} to="/portfolio" className={`text-2xl font-bold tracking-widest uppercase hover:text-brand-yellow transition-colors ${location.pathname === '/portfolio' ? 'text-brand-yellow' : 'text-gray-300'}`}>Portfolio</Link> {/* Portfolio link */}
             <Link onClick={() => setIsMenuOpen(false)} to="/contact" className={`text-2xl font-bold tracking-widest uppercase text-black bg-brand-yellow px-10 py-4 rounded shadow-lg`}>Contact</Link> {/* Contact link */}
+            </div> {/* Close inner wrapper */}
           </motion.div>
         )} {/* Close conditional */}
       </AnimatePresence> {/* Close AnimatePresence */}
 
-      <div className="relative z-10 flex flex-col items-center pt-24 md:pt-32 pb-20 overflow-hidden flex-1 w-full"> {/* Content area */}
+      <div className="relative z-10 flex flex-col items-center justify-center pt-20 md:pt-32 pb-8 md:pb-20 overflow-x-hidden min-h-[100svh] w-full"> {/* Content area */}
         <AnimatePresence mode="wait"> {/* Page transition handler */}
           <Outlet /> {/* Render current route */}
         </AnimatePresence> {/* Close animate presence */}

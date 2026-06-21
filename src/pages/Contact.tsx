@@ -11,16 +11,21 @@ export default function Contact() { // Component definition
   }; // Close handler
 
   return ( // Return JSX
-    <section className="w-full max-w-4xl mx-auto px-6 pt-2 md:pt-10"> {/* Contact container */}
+    <section className="w-full max-w-full px-4 md:max-w-4xl mx-auto flex flex-col justify-center"> {/* Contact container */}
+      <motion.div /* Animated header */
+        initial={{ opacity: 0, y: -20 }} /* Initial state */
+        animate={{ opacity: 1, y: 0 }} /* Animate into view */
+        className="text-center mb-4 md:mb-8 lg:mb-16" /* Header styling */
+      > {/* Close motion div */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-widest mb-2 md:mb-4 drop-shadow-lg">Initialize Contact</h1> {/* Title */}
+        <p className="text-sm md:text-base text-gray-400 px-2 font-medium">Ready to level up your project? Send us your coordinates.</p> {/* Subtitle */}
+      </motion.div> {/* Close header */}
+
       <motion.div /* Animated form wrapper */
         initial={{ opacity: 0, y: 50 }} /* Initial state */
         animate={{ opacity: 1, y: 0 }} /* Animate into view */
-        className="glass-panel p-8 md:p-16 rounded-3xl border border-white/10 shadow-2xl bg-black/80" /* Wrapper styling */
+        className="glass-panel p-8 md:p-10 lg:p-16 rounded-3xl border border-white/10 shadow-2xl bg-black/80" /* Wrapper styling */
       > {/* Close motion div */}
-        <div className="text-center mb-12"> {/* Text center */}
-          <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-widest mb-4">Initialize Contact</h1> {/* Title */}
-          <p className="text-gray-400">Ready to level up your project? Send us your coordinates.</p> {/* Subtitle */}
-        </div> {/* Close text center */}
 
         {isSubmitted ? ( // Success message
           <motion.div /* Animated success wrapper */

@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"; // Import framer motion
 import React from "react"; // Import react
-import MobileCarousel from "../components/MobileCarousel"; // Import carousel
 import imgCyberpunk from "../assets/portfolio_cyberpunk.png"; // Import cyberpunk image
 import imgRpg from "../assets/portfolio_rpg.png"; // Import rpg image
 import imgShmup from "../assets/portfolio_shmup.png"; // Import shmup image
@@ -68,18 +67,18 @@ export default function Portfolio() { // Portfolio page
   ]; // Close array
 
   return ( // Return JSX
-    <section className="w-full max-w-7xl mx-auto px-6 pt-10" style={{ perspective: 1000 }}> {/* Portfolio container */}
+    <section className="w-full max-w-full px-4 md:max-w-7xl mx-auto flex flex-col justify-center" style={{ perspective: 1000 }}> {/* Portfolio container */}
       <motion.div /* Animated header */
         initial={{ opacity: 0, y: -20 }} /* Initial state */
         animate={{ opacity: 1, y: 0 }} /* Active state */
-        className="text-center mb-20" /* Styling */
+        className="text-center mb-8 md:mb-12 lg:mb-16" /* Styling */
       > {/* Close motion div */}
-        <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-6 drop-shadow-lg">Our Masterpieces</h1> {/* Title */}
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest mb-4 md:mb-6 drop-shadow-lg">Our Masterpieces</h1> {/* Title */}
         <div className="w-24 h-1 bg-brand-yellow mx-auto rounded-full" /> {/* Decorative line */}
       </motion.div> {/* Close motion div */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"> {/* Grid layout */}
-        <MobileCarousel items={projects.map((proj, idx) => ( // Map over projects to generate cards for carousel
+      <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 w-full"> {/* Grid layout */}
+        {projects.map((proj, idx) => ( // Map over projects to generate cards
           <TiltCard key={proj.id} delay={idx * 0.1}> {/* Render TiltCard */}
             <div className="aspect-[16/9] w-full overflow-hidden bg-black relative" style={{ transform: "translateZ(50px)" }}> {/* Image container with 3D pop */}
               <div className="absolute inset-0 bg-brand-yellow/10 group-hover:bg-transparent transition-colors duration-500 z-10 mix-blend-overlay" /> {/* Overlay */}
@@ -97,7 +96,7 @@ export default function Portfolio() { // Portfolio page
               </div> {/* Close description container */}
             </div> {/* Close text container */}
           </TiltCard>
-        ))} /> {/* Close MobileCarousel */}
+        ))} {/* Close Map */}
       </div> {/* Close grid layout */}
     </section>
   ); // Close return
