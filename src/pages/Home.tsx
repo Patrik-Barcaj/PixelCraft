@@ -10,18 +10,28 @@ export default function Home() { // Home component
   return ( // Return JSX
     <main className="w-full max-w-full flex flex-col items-center justify-center flex-1 text-center relative overflow-x-hidden my-auto px-4 md:max-w-7xl mx-auto"> {/* Main hero container */}
       <motion.div /* Animated wrapper */
-        className="flex flex-col items-center justify-center mb-16 relative w-full" /* Centering styling */
+        className="flex flex-col items-center justify-center mb-8 md:mb-10 relative w-full" /* Centering styling */
       > {/* Close motion div opening */}
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 bg-brand-yellow/10 blur-[120px] rounded-full z-0 pointer-events-none" /> {/* Ambient glow */}
 
         <motion.img /* Animated logo */
-          initial={{ opacity: 0, scale: 0.5, rotate: -180 }} /* Initial state */
-          animate={{ opacity: 1, scale: 1, rotate: 0 }} /* Animate state */
-          transition={{ duration: 1.5, type: "spring" }} /* Transition */
+          initial={{ opacity: 0, scale: 0.5, y: -300, rotateX: 180 }} /* Initial state */
+          animate={{ 
+            opacity: 1, 
+            scale: 1, 
+            y: [ -300, 40, -15, 0 ], 
+            rotateX: 0 
+          }} /* Animate state */
+          transition={{
+            y: { duration: 0.7, times: [0, 0.5, 0.8, 1], ease: "easeOut" },
+            opacity: { duration: 0.5 },
+            scale: { duration: 0.5 },
+            rotateX: { delay: 0.8, duration: 0.6, type: "spring", stiffness: 200, damping: 12 }
+          }} /* Transition */
           src={logoOnly} /* Logo image source */
           alt="Logo" /* Alt text */
-          className="w-auto h-[3em] text-[3rem] md:text-[5rem] lg:text-[7rem] mb-2 md:mb-4 glow-shadow z-10" /* Styling */
+          className="w-auto h-[3em] text-[3rem] md:text-[5rem] lg:text-[5.5rem] mb-2 md:mb-4 glow-shadow z-10" /* Styling */
         /> {/* Close img */}
 
         <h1 className="z-10 px-4 mb-2 flex justify-center w-full"> {/* Brand title wrapper */}
@@ -32,14 +42,14 @@ export default function Home() { // Home component
           initial={{ opacity: 0 }} /* Initial state */
           animate={{ opacity: 1 }} /* Animate state */
           transition={{ delay: 1, duration: 1 }} /* Transition */
-          className="z-20 mt-0 mb-6 md:mb-10" /* Style wrapper */
+          className="z-20 mt-0 mb-4 md:mb-6" /* Style wrapper */
         > {/* Close motion div */}
           <img src={visionsUnleashedText} alt="Visions Unleashed" className="h-6 md:h-10 mx-auto drop-shadow-md" /> {/* Slogan image */}
         </motion.div> {/* Close wrapper */}
 
         <motion.div /* New text content wrapper */
-          initial={{ opacity: 0, y: 10 }} /* Initial state */
-          animate={{ opacity: 1, y: 0 }} /* Animate state */
+          initial={{ opacity: 0, scale: 0.95 }} /* Initial state */
+          animate={{ opacity: 1, scale: 1 }} /* Animate state */
           transition={{ delay: 1.2, duration: 0.8 }} /* Transition timing */
           className="z-20 max-w-3xl mx-auto flex flex-col gap-3 px-4" /* Flex layout */
         > {/* Close div opening */}
@@ -53,8 +63,8 @@ export default function Home() { // Home component
       </motion.div> {/* Close animated wrapper */}
 
       <motion.div /* CTA button group wrapper */
-        initial={{ opacity: 0, y: 20 }} /* Initial state */
-        animate={{ opacity: 1, y: 0 }} /* Animated state */
+        initial={{ opacity: 0, scale: 0.9 }} /* Initial state */
+        animate={{ opacity: 1, scale: 1 }} /* Animated state */
         transition={{ delay: 1.5, duration: 0.8 }} /* Transition timing */
         className="flex flex-col sm:flex-row gap-6 z-10" /* Flex layout */
       > {/* Close div opening */}
