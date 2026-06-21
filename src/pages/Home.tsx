@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion"; // Import motion
+import { motion } from "framer-motion"; // Import motion
 import { ArrowRight } from "lucide-react"; // Import icons
 import { Link } from "react-router-dom"; // Import link
 import logoOnly from "../assets/LogoOnlyNoTypeNoSlogan.png"; // Import logo
